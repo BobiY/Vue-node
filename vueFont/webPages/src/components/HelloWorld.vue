@@ -1,85 +1,50 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <el-menu
+      :default-active="activeIndex2"
+      class="el-menu-demo"
+      mode="horizontal"
+      @select="handleSelect"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b">
+      <el-menu-item index="1">处理中心</el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">我的工作台</template>
+        <el-menu-item index="2-1">选项1</el-menu-item>
+        <el-menu-item index="2-2">选项2</el-menu-item>
+        <el-menu-item index="2-3">选项3</el-menu-item>
+        <el-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="2-4-1">选项1</el-menu-item>
+          <el-menu-item index="2-4-2">选项2</el-menu-item>
+          <el-menu-item index="2-4-3">选项3</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="3" disabled>消息中心</el-menu-item>
+      <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+    </el-menu>
+    <div>
+      <h3>/assets/img/logo.png</h3>
+      <!-- <img src="static/img/logo.png" alt=""> -->
+      <div class="img first"></div>
+      <hr>
+      <h3>assets/class/logo.png   assets/class/vature.png</h3>
+        <div class="img second"></div>
+        <div class="img three"></div>
+       <!-- <img src="static/classes/logo.png" alt="">
+       <img src="static/classes/vature.png" alt=""> -->
+        <hr>
+      <h3>static/img/favico</h3>
+      <!-- <img src="static/img/favico.png" alt=""> -->
+      <div class="img four"></div>
+       <h3>static/class/favico   static/class/vature.png</h3>
+         <!-- <img src="static/class/favico.png" alt="">
+         <img src="static/class/vature.png" alt=""> -->
+
+        <div class="img five"></div>
+        <div class="img six"></div>
+    </div>
   </div>
 </template>
 
@@ -88,7 +53,12 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      activeIndex2: '1'
+    }
+  },
+  methods: {
+    handleSelect (key, keyPath) {
+      console.log(key, keyPath)
     }
   }
 }
@@ -110,4 +80,34 @@ li {
 a {
   color: #42b983;
 }
+.img{
+  width:300px;
+  height:300px;
+  background-size: cover;
+}
+.first{
+  background: url('../assets/img/logo.png')
+
+}
+.second{
+   background: url('../assets/classes/logo.png') center no-repeat;
+
+}
+.three{
+   background: url('../assets/classes/vature.png') center no-repeat;
+
+}
+.four{
+   background: url('../../static/img/favico.png') center no-repeat;
+
+}
+.five{
+   background: url('../../static/class/favico.png') center no-repeat;
+
+}
+.six{
+   background: url('../../static/class/vature.png') center no-repeat;
+
+}
+
 </style>
