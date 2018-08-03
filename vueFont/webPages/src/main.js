@@ -6,8 +6,14 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/index.css'
+import axios from 'axios'
 
+// require('mockjs')
+import './mock/mock'
+
+// import Mock from 'mockjs'
 Vue.use(ElementUI)
+Vue.prototype.$ajax = axios
 
 Vue.config.productionTip = false
 

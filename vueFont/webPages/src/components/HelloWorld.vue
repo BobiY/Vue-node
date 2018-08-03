@@ -24,31 +24,11 @@
       <el-menu-item index="3" disabled>消息中心</el-menu-item>
       <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
     </el-menu>
-    <div>
-      <h3>/assets/img/logo.png</h3>
-      <!-- <img src="static/img/logo.png" alt=""> -->
-      <div class="img first"></div>
-      <hr>
-      <h3>assets/class/logo.png   assets/class/vature.png</h3>
-        <div class="img second"></div>
-        <div class="img three"></div>
-       <!-- <img src="static/classes/logo.png" alt="">
-       <img src="static/classes/vature.png" alt=""> -->
-        <hr>
-      <h3>static/img/favico</h3>
-      <!-- <img src="static/img/favico.png" alt=""> -->
-      <div class="img four"></div>
-       <h3>static/class/favico   static/class/vature.png</h3>
-         <!-- <img src="static/class/favico.png" alt="">
-         <img src="static/class/vature.png" alt=""> -->
-
-        <div class="img five"></div>
-        <div class="img six"></div>
-    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
@@ -56,9 +36,20 @@ export default {
       activeIndex2: '1'
     }
   },
+  created () {
+    this.setApi()
+  },
   methods: {
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+    },
+    setApi () {
+      // console.log('axios:', axios)
+      axios.post('/news', 'type=top&key=123456').then(res => {
+        console.log('res:', res)
+      })
+      axios.get('/QuerySug/getQuerySug?keyword=数学').then(res => {
+        console.log('keyword:', res)
+      })
     }
   }
 }
@@ -79,35 +70,6 @@ li {
 }
 a {
   color: #42b983;
-}
-.img{
-  width:300px;
-  height:300px;
-  background-size: cover;
-}
-.first{
-  background: url('../assets/img/logo.png')
-
-}
-.second{
-   background: url('../assets/classes/logo.png') center no-repeat;
-
-}
-.three{
-   background: url('../assets/classes/vature.png') center no-repeat;
-
-}
-.four{
-   background: url('../../static/img/favico.png') center no-repeat;
-
-}
-.five{
-   background: url('../../static/class/favico.png') center no-repeat;
-
-}
-.six{
-   background: url('../../static/class/vature.png') center no-repeat;
-
 }
 
 </style>
