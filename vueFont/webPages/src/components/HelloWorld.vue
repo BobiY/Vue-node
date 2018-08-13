@@ -24,6 +24,14 @@
       <el-menu-item index="3" disabled>消息中心</el-menu-item>
       <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
     </el-menu>
+  <div class="box">
+    <ul>
+      <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li>
+    </ul>
+  </div>
   </div>
 </template>
 
@@ -44,11 +52,14 @@ export default {
     },
     setApi () {
       // console.log('axios:', axios)
-      axios.post('/news', 'type=top&key=123456').then(res => {
+      axios.get('/news').then(res => {
         console.log('res:', res)
       })
       axios.get('/QuerySug/getQuerySug?keyword=数学').then(res => {
         console.log('keyword:', res)
+      })
+      axios.get('/exam/reportAnalysi/').then(res => {
+        console.log('reportAnalysi:', res)
       })
     }
   }
@@ -56,20 +67,24 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style lang="scss" scoped="" type="text/css">
+ .box{
+   width:auto;
+   height:auto;
+   margin:0 auto;
+   ul{
+     li.item{
+       display: inline-block;
+       width:400px;
+       margin-right:20px;
+       background:green;
+       border:2px solid skyblue;
+       height:40px;
+       &:last-child{
+         margin-right:20px;
+       }
+     }
+   }
+ }
 
 </style>

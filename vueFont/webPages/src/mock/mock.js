@@ -51,4 +51,21 @@ const produceData = function (opt) {
 //   ]
 // }
 
+// const getUrls = (apiUrl) => {
+// }
+Mock.mock('/exam/reportAnalysi/', /post|get/i, {
+  'rankGrade': 'string',
+  'commentTeacher': 'string',
+  'module': [
+    {
+      'moduleId': 0,
+      'moduleName': 'string',
+      'questionId': 0,
+      'accuracy': 0,
+      'accuracyGrade': 0,
+      'result': 'string'
+    }
+  ]
+})
+
 Mock.mock('/news', /post|get/i, produceData)// 当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
